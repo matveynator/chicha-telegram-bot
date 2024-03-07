@@ -19,19 +19,19 @@ RUN dpkgArch="$(dpkg --print-architecture)" \
     && echo "Architecture: $ARCH" \
     && echo "$ARCH" > /tmp/ARCH
 
-# Download latest ChichaTeleBot and fast-cuda-whisper binaries
-ADD http://files.matveynator.ru/ChichaTeleBot/latest/linux/$(cat /tmp/ARCH)/ChichaTeleBot /usr/local/bin/ChichaTeleBot
-RUN chmod +x /usr/local/bin/ChichaTeleBot
-
-ADD http://files.matveynator.ru/ChichaTeleBot/latest/linux/$(cat /tmp/ARCH)/fast-cuda-whisper /usr/local/bin/fast-cuda-whisper
-RUN chmod +x /usr/local/bin/fast-cuda-whisper
-
 # Set default runtime to NVIDIA and define GPU capabilities
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 
 # Install necessary dependencies
 RUN apt-get update && apt-get -y install curl gnupg lsb-release
+
+# Download latest ChichaTeleBot and fast-cuda-whisper binaries
+RUN curl -L http://files.matveynator.ru/ChichaTeleBot/latest/linux/$(cat /tmp/ARCH)/ChichaTeleBot > /usr/local/bin/ChichaTeleBot
+RUN chmod +x /usr/local/bin/ChichaTeleBot
+
+RUN curl -L http://files.matveynator.ru/ChichaTeleBot/latest/linux/$(cat /tmp/ARCH)/fast-cuda-whisper > /usr/local/bin/fast-cuda-whisper
+RUN chmod +x /usr/local/bin/fast-cuda-whisper
 
 # Install necessary packages including Python, Pip, Git, Golang, FFmpeg, and Vim
 RUN apt-get install -y python3 python3-pip python3-venv git golang-go ffmpeg vim;
