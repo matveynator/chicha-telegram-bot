@@ -1,4 +1,4 @@
-# ChichaTeleBot - your AI voice assistant on Telegram in Docker.
+# ChichaTeleBot - your AI voice assistant on Telegram packed in Docker.
 ## Chicha saves your time! 
 Powered by [SYSTRAN/faster-whisper](https://github.com/SYSTRAN/faster-whisper) transformer and [OpenAI/whisper-large-v2](https://huggingface.co/openai/whisper-large-v2) language model. Written in GO. Works in Docker.
 
