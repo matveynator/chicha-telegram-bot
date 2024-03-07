@@ -2,6 +2,25 @@
 #FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 FROM ubuntu:22.04
 
+# Получаем архитектуру и устанавливаем соответствующую переменную TARGET_ARCH
+RUN ARCHITECTURE=$(uname -m) \
+    && case $ARCHITECTURE in \
+        "i386") TARGET_ARCH="386" ;; \
+        "x86_64" | "amd64") TARGET_ARCH="amd64" ;; \
+        "armv6l" | "armv7l") TARGET_ARCH="arm" ;; \
+        "aarch64") TARGET_ARCH="arm64" ;; \
+        "mips") TARGET_ARCH="mips" ;; \
+        "mips64") TARGET_ARCH="mips64" ;; \
+        "mips64le") TARGET_ARCH="mips64le" ;; \
+        "mipsle") TARGET_ARCH="mipsle" ;; \
+        "ppc64") TARGET_ARCH="ppc64" ;; \
+        "ppc64le") TARGET_ARCH="ppc64le" ;; \
+        "riscv64") TARGET_ARCH="riscv64" ;; \
+        "s390x") TARGET_ARCH="s390x" ;; \
+        *) echo "Неизвестная архитектура: $ARCHITECTURE" && exit 1 ;; \
+    esac \
+    && echo "Архитектура: $TARGET_ARCH"
+
 # Set the default runtime to NVIDIA
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
@@ -32,10 +51,10 @@ RUN /venv/bin/pip3 install --force-reinstall "faster-whisper @ https://github.co
 
 # Get latest ChichaTeleBot and fast-cuda-whisper
 
-ADD http://files.matveynator.ru/ChichaTeleBot/latest/linux/amd64/ChichaTeleBot /usr/local/bin/ChichaTeleBot
+ADD http://files.matveynator.ru/ChichaTeleBot/latest/linux/$TARGET_ARCH/ChichaTeleBot /usr/local/bin/ChichaTeleBot
 RUN chmod +x /usr/local/bin/ChichaTeleBot
 
-ADD http://files.matveynator.ru/ChichaTeleBot/latest/linux/amd64/fast-cuda-whisper /usr/local/bin/fast-cuda-whisper
+ADD http://files.matveynator.ru/ChichaTeleBot/latest/linux/$TARGET_ARCH/fast-cuda-whisper /usr/local/bin/fast-cuda-whisper
 RUN chmod +x /usr/local/bin/fast-cuda-whisper
 
 # Задаем переменную окружения
