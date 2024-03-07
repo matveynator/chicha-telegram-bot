@@ -32,10 +32,10 @@ RUN /venv/bin/pip3 install --force-reinstall "faster-whisper @ https://github.co
 
 # Get latest ChichaTeleBot and fast-cuda-whisper
 
-RUN curl -sl http://files.matveynator.ru/ChichaTeleBot/latest/linux/amd64/ChichaTeleBot > /usr/local/bin/ChichaTeleBot
+RUN curl -L http://files.matveynator.ru/ChichaTeleBot/latest/linux/amd64/ChichaTeleBot > /usr/local/bin/ChichaTeleBot
 RUN chmod +x /usr/local/bin/ChichaTeleBot
 
-RUN curl -sl http://files.matveynator.ru/ChichaTeleBot/latest/linux/amd64/fast-cuda-whisper > /usr/local/bin/fast-cuda-whisper
+RUN curl -L http://files.matveynator.ru/ChichaTeleBot/latest/linux/amd64/fast-cuda-whisper > /usr/local/bin/fast-cuda-whisper
 RUN chmod +x /usr/local/bin/fast-cuda-whisper
 
 # Задаем переменную окружения
