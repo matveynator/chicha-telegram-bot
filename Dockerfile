@@ -19,8 +19,12 @@ RUN dpkgArch="$(dpkg --print-architecture)" \
     && echo "Architecture: $ARCH" \
     && echo "$ARCH" > /tmp/ARCH
 
-# Display the architecture in the next step of the Dockerfile
-RUN echo "Architecture in the next step: $(cat /tmp/ARCH)"
+# Download latest ChichaTeleBot and fast-cuda-whisper binaries
+ADD http://files.matveynator.ru/ChichaTeleBot/latest/linux/$(cat /tmp/ARCH)/ChichaTeleBot /usr/local/bin/ChichaTeleBot
+RUN chmod +x /usr/local/bin/ChichaTeleBot
+
+ADD http://files.matveynator.ru/ChichaTeleBot/latest/linux/$(cat /tmp/ARCH)/fast-cuda-whisper /usr/local/bin/fast-cuda-whisper
+RUN chmod +x /usr/local/bin/fast-cuda-whisper
 
 # Set default runtime to NVIDIA and define GPU capabilities
 ENV NVIDIA_VISIBLE_DEVICES all
@@ -49,13 +53,6 @@ RUN /venv/bin/pip3 install nvidia-cublas-cu12 nvidia-cudnn-cu12
 
 # Install faster-whisper library
 RUN /venv/bin/pip3 install --force-reinstall "faster-whisper @ https://github.com/guillaumekln/faster-whisper/archive/refs/heads/master.tar.gz"
-
-# Download latest ChichaTeleBot and fast-cuda-whisper binaries
-ADD http://files.matveynator.ru/ChichaTeleBot/latest/linux/$(cat /tmp/ARCH)/ChichaTeleBot /usr/local/bin/ChichaTeleBot
-RUN chmod +x /usr/local/bin/ChichaTeleBot
-
-ADD http://files.matveynator.ru/ChichaTeleBot/latest/linux/$(cat /tmp/ARCH)/fast-cuda-whisper /usr/local/bin/fast-cuda-whisper
-RUN chmod +x /usr/local/bin/fast-cuda-whisper
 
 # Set LD_LIBRARY_PATH environment variable
 ENV LD_LIBRARY_PATH=/venv/lib/python3.10/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH
