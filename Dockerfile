@@ -32,17 +32,18 @@ RUN /venv/bin/pip3 install --force-reinstall "faster-whisper @ https://github.co
 
 # Get latest ChichaTeleBot and fast-cuda-whisper
 
-RUN curl -L http://files.matveynator.ru/ChichaTeleBot/latest/linux/amd64/ChichaTeleBot > /usr/local/bin/ChichaTeleBot
+ADD http://files.matveynator.ru/ChichaTeleBot/latest/linux/amd64/ChichaTeleBot /usr/local/bin/ChichaTeleBot
 RUN chmod +x /usr/local/bin/ChichaTeleBot
 
-RUN curl -L http://files.matveynator.ru/ChichaTeleBot/latest/linux/amd64/fast-cuda-whisper > /usr/local/bin/fast-cuda-whisper
+ADD http://files.matveynator.ru/ChichaTeleBot/latest/linux/amd64/fast-cuda-whisper /usr/local/bin/fast-cuda-whisper
 RUN chmod +x /usr/local/bin/fast-cuda-whisper
 
 # Задаем переменную окружения
 ENV LD_LIBRARY_PATH=/venv/lib/python3.10/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH
 
 # Prefetch model inside docker container:
-RUN /usr/local/bin/fast-cuda-whisper /app/ChichaTeleBot/test.ogg 
+ADD https://github.com/matveynator/ChichaTeleBot/raw/main/test.ogg /tmp/test.ogg
+RUN /usr/local/bin/fast-cuda-whisper /tmp/test.ogg 
 
 
 # Run ChichaTeleBot as a daemon
