@@ -48,6 +48,12 @@ git clone https://github.com/matveynator/ChichaTeleBot.git
 cd ChichaTeleBot
 docker build -t chichatelebot .
 ```
+## push to docker registry:
+```
+docker tag chichatelebot:latest matveynator/chichatelebot:latest 
+docker push matveynator/chichatelebot:latest
+```
+
 
 ```bash
 docker run -d --restart unless-stopped -e TELEGRAM_BOT_TOKEN="your_telegram_bot_token" -e DEBUG="false" --gpus all --name "your_telegram_bot_name" chichatelebot
