@@ -54,11 +54,14 @@ docker tag chichatelebot:latest matveynator/chichatelebot:latest
 docker push matveynator/chichatelebot:latest
 ```
 
-
 ```bash
 docker run -d --restart unless-stopped -e TELEGRAM_BOT_TOKEN="your_telegram_bot_token" -e DEBUG="false" --gpus all --name "your_telegram_bot_name" chichatelebot
 ```
 Now you have a fully functional ChichaTeleBot, offering a seamless voice-to-text experience while ensuring privacy and security for your users.
+
+## Download binary version for multiple platforms:
+
+[Download latest ChichaTeleBot (Linux,Mac,BSD,Windows)](http://files.matveynator.ru/ChichaTeleBot/latest)
 
 ## INSTALLING NVIDIA CUDA for Docker on Ubuntu:
 ```bash
