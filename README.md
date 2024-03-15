@@ -21,12 +21,12 @@ docker pull matveynator/chichatelebot:latest
 
 ## Fast:
 ```bash
-docker run -d --restart unless-stopped -e DEBUG="false" -e TELEGRAM_BOT_TOKEN="your_telegram_bot_token" --gpus all --name "your_telegram_bot_name" matveynator/chichatelebot:latest
+docker run -d --restart unless-stopped -e TELEGRAM_BOT_TOKEN="your_telegram_bot_token" --gpus all --name "your_telegram_bot_name" matveynator/chichatelebot:latest
 ```
 
 ## Slow:
 ```bash
-docker run -d --restart unless-stopped -e DEBUG="false" -e TELEGRAM_BOT_TOKEN="your_telegram_bot_token" --name "your_telegram_bot_name" matveynator/chichatelebot:latest
+docker run -d --restart unless-stopped -e TELEGRAM_BOT_TOKEN="your_telegram_bot_token" --name "your_telegram_bot_name" matveynator/chichatelebot:latest
 ```
 
 ## Privacy and 🔐 Security:
@@ -55,7 +55,7 @@ docker push matveynator/chichatelebot:latest
 ```
 
 ```bash
-docker run -d --restart unless-stopped -e TELEGRAM_BOT_TOKEN="your_telegram_bot_token" -e DEBUG="false" --gpus all --name "your_telegram_bot_name" chichatelebot
+docker run -d --restart unless-stopped -e TELEGRAM_BOT_TOKEN="your_telegram_bot_token" --gpus all --name "your_telegram_bot_name" chichatelebot
 ```
 Now you have a fully functional ChichaTeleBot, offering a seamless voice-to-text experience while ensuring privacy and security for your users.
 
