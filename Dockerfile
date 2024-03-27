@@ -62,4 +62,4 @@ ADD https://github.com/matveynator/ChichaTeleBot/raw/main/test.ogg /tmp/test.ogg
 RUN /usr/local/bin/fast-cuda-whisper /tmp/test.ogg 
 
 # Run ChichaTeleBot as a daemon
-CMD ["/usr/local/bin/ChichaTeleBot"]
+CMD ["nice -n -20 /usr/local/bin/ChichaTeleBot"]
