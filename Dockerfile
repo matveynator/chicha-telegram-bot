@@ -49,7 +49,7 @@ ENV PATH="/venv/bin:/root/.local/bin:$PATH"
 RUN /venv/bin/pip3 install --upgrade pip 
 
 # Install CUDA NVIDIA Drivers
-RUN /venv/bin/pip3 install nvidia-cublas-cu12 nvidia-cudnn-cu12
+RUN /venv/bin/pip3 install --extra-index-url https://pypi.nvidia.com nvidia-cublas-cu12 nvidia-cudnn-cu12
 
 # Install faster-whisper library
 RUN /venv/bin/pip3 install --force-reinstall "faster-whisper @ https://github.com/guillaumekln/faster-whisper/archive/refs/heads/master.tar.gz"
@@ -62,4 +62,4 @@ ADD https://github.com/matveynator/ChichaTeleBot/raw/main/test.ogg /tmp/test.ogg
 RUN /usr/local/bin/fast-cuda-whisper /tmp/test.ogg 
 
 # Run ChichaTeleBot as a daemon
-CMD ["nice -n -20 /usr/local/bin/ChichaTeleBot"]
+CMD ["/usr/bin/nice -n -20 /usr/local/bin/ChichaTeleBot"]
