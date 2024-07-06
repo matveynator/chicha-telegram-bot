@@ -46,6 +46,7 @@ cd /usr/src
 rm -rf /usr/src/ChichaTeleBot
 git clone https://github.com/matveynator/ChichaTeleBot.git
 cd ChichaTeleBot
+#docker builder prune
 #docker system prune -a
 docker build --no-cache -t chichatelebot .
 ```
