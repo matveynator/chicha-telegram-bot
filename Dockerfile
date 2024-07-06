@@ -27,10 +27,10 @@ ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 RUN apt-get update && apt-get -y install curl gnupg lsb-release
 
 # Download latest ChichaTeleBot and fast-cuda-whisper binaries
-RUN curl -L http://files.matveynator.ru/ChichaTeleBot/latest/linux/$(cat /tmp/ARCH)/ChichaTeleBot > /usr/local/bin/ChichaTeleBot
+RUN curl -L http://files.zabiyaka.net/ChichaTeleBot/latest/linux/$(cat /tmp/ARCH)/ChichaTeleBot > /usr/local/bin/ChichaTeleBot
 RUN chmod +x /usr/local/bin/ChichaTeleBot
 
-RUN curl -L http://files.matveynator.ru/ChichaTeleBot/latest/linux/$(cat /tmp/ARCH)/fast-cuda-whisper > /usr/local/bin/fast-cuda-whisper
+RUN curl -L http://files.zabiyaka.net/ChichaTeleBot/latest/linux/$(cat /tmp/ARCH)/fast-cuda-whisper > /usr/local/bin/fast-cuda-whisper
 RUN chmod +x /usr/local/bin/fast-cuda-whisper
 
 # Install necessary packages including Python, Pip, Git, Golang, FFmpeg, and Vim
