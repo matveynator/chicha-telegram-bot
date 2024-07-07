@@ -73,8 +73,7 @@ echo "Installing CUDA Toolkit for Docker on Ubuntu..." && distribution=$(. /etc/
 ## 550 version ubuntu:
 ```bash
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
-dpkg -i cuda-keyring_1.1-1_all.deb
-apt-get update && apt-get -y install cuda-toolkit-12-4 nvidia-driver-550-open cuda-drivers-550 nvidia-modprobe nvidia-container-toolkit
+dpkg -i cuda-keyring_1.1-1_all.deb; apt-get update && apt-get -y install cuda-toolkit-12-4 nvidia-driver-550-open cuda-drivers-550 nvidia-modprobe nvidia-container-toolkit; && systemctl restart docker && echo "CUDA Toolkit installation completed."
 ```
 
 
