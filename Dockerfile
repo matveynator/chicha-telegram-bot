@@ -52,7 +52,7 @@ RUN /venv/bin/pip3 install --upgrade pip
 RUN /venv/bin/pip3 install --extra-index-url https://pypi.nvidia.com nvidia-cublas-cu12 nvidia-cudnn-cu12
 
 # Install faster-whisper library
-#RUN /venv/bin/pip3 install faster-whisper
+#RUN /venv/bin/pip3 install faster-whisper #NOT WORKING CORRECTLY 
 RUN /venv/bin/pip3 install --force-reinstall "faster-whisper @ https://github.com/SYSTRAN/faster-whisper/archive/refs/heads/master.tar.gz"
 RUN /venv/bin/pip3 install torchvision
 
