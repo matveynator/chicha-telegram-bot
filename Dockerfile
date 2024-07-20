@@ -52,7 +52,8 @@ RUN /venv/bin/pip3 install --upgrade pip
 RUN /venv/bin/pip3 install --extra-index-url https://pypi.nvidia.com nvidia-cublas-cu12 nvidia-cudnn-cu12
 
 # Install faster-whisper library
-RUN /venv/bin/pip3 install faster-whisper
+#RUN /venv/bin/pip3 install faster-whisper
+RUN /venv/bin/pip3 install --force-reinstall "faster-whisper @ https://github.com/SYSTRAN/faster-whisper/archive/refs/heads/master.tar.gz"
 
 # Set LD_LIBRARY_PATH environment variable
 ENV LD_LIBRARY_PATH=/venv/lib/python3.10/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH
