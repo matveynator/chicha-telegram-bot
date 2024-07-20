@@ -1,1 +1,1 @@
-@ChichaTeleBot
+@ChichaTeleBot GPU v1
