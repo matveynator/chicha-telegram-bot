@@ -12,7 +12,7 @@ ChichaTeleBot is a fantastic voice bot for Telegram that transforms spoken words
 
 
 
-🟢 **Live Telegram Demo:** [@ChichaTeleBot](https://t.me/voicehotkeybot)
+🟢 **Live Telegram Demo:** [@ChichaTeleBot](https://t.me/ChichaTeleBot)
 
 ## Quick Installation via Docker:
 
